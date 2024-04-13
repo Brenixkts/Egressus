@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+Khojki&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Kanit&family=Noto+Sans+Khojki&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Rasa:ital,wght@0,300..700;1,300..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+body{
+    background-image: url(../img/backgroundCad.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center top;
+    background-attachment: fixed;
+}
+
+
+.main-content{
+    margin: 1vw 6vh;
+    padding: 10vh;
+    background-color: rgb(223, 233, 233);
+    max-width: 45%;
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.main-content .form-header img{
+    max-width: 300px;
+    margin: 0 16vh;
+    padding-top: 0;
+}
+.main-content .form-content{
+    margin-left: 4.6vw
+}
+
+.form-content .form-input label{
+    padding-top: 10px;
+    padding-bottom: 5px;
+    color: rgb(0, 61, 153);
+    font-size: larger;
+    font-family: 'Kanit', sans-serif;
+}
+
+.main-content input::placeholder{
+    transition: 0.3 all ease;
+    color: rgb(5, 10, 31);
+}
+
+
+.main-content .form-content input{
+    border-radius: 5px;
+    outline: unset;
+    padding: 5px;
+    max-width: 27.3vw;    
+    font-size: medium;
+}
+
+
+
+.form-content .form-input .nome{
+    width: 100%;
+}
+
+
+.main-content .form-content .form-input .telefone-input{
+
+    width: 40%;
+
+}
+
+.form-content .form-input-endereco .cidade{
+    width: 52.5%;
+}
+
+
+
+.main-content .form-content .form-input{
+    padding-top: 2px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content .form-content .form-input .logo{
+    background-color: aliceblue;
+}
+
+
+
+.main-content .form-content .form-input-endereco label{
+    padding-top: 10px;
+    padding-bottom: 5px;
+    color: rgb(0, 61, 153);
+    font-size: larger;
+    font-family: 'Kanit', sans-serif;
+    display: flex;
+}
+
+
+.form-content .form-input-endereco select{
+    width: 20%;
+    height: 4vh;
+    border-radius: 5px;
+    font-size: medium;
+    margin-right:4.5vh;
+}
+
+.form-content .form-input select{
+    width: 90%;
+    height: 4vh;
+    border-radius: 5px;
+    font-size: medium;
+}
+
+.form-content .tipo-ensino select{
+    width: 90%;
+    height: 4vh;
+    border-radius: 5px;
+    font-size: medium;
+}
+
+
+
+.main-content .form-content .form-input-contato label{
+    padding-top: 10px;
+    padding-bottom: 5px;
+    color: rgb(0, 61, 153);
+    font-size: larger;
+    font-family: 'Kanit', sans-serif;
+}
+
+
+
+.main-content .form-content .form-input-usuario label{
+    padding-top: 10px;
+    padding-bottom: 5px;
+    color: rgb(0, 61, 153);
+    font-size: larger;
+    font-family: 'Kanit', sans-serif;
+}
+
+
+.form-content .tipo-ensino{
+    padding-top: 3px;
+}
+
+
+.form-content .form-input-endereco .endereco{
+    width: 100%;
+}
+.form-content .form-input-endereco .bairro{
+    width: 100%;
+}
+
+
+.form-content .form-input-usuario .dataNascimento{
+    height: 4.4vh;
+    width: 45%;
+    text-align: center;
+    font-size: large;
+}
+
+.form-content .form-input-endereco .cep{
+    width: 35%;
+}
+
+.form-content .form-input-endereco .complemento{
+    width: 53.5%;
+    margin-left: 0.5vh;
+}
+
+
+/*Remove as setas do input number*/
+input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+/*----------Labels--------------*/
+
+/*Seção de formatação das Labels. Fiz dessa maneira para que ficassem alinhadas aos seus respectivos campos*/
+
+/*Uf e cidade*/
+.form-content .form-input-endereco .labels-endereco1{
+    display: flex;
+    justify-content: space-between;
+    width: 38vh;
+}
+/*Cep e complemento*/
+.form-content .form-input-endereco .labels-endereco2{
+    display: flex;
+    justify-content: space-between;
+    width: 40.5vh;
+}
+.form-content .form-input-contato .labels-contato{
+    display: flex;
+    justify-content: space-between;
+    width: 39.2vh;
+}
+
+
+.form-content .form-input-contato .labels-contato{
+    display: flex;
+    justify-content: space-between;
+    width: 38.7vh;
+}
+
+
+
+.form-content .form-input-usuario .labels-usuario1{
+    display: flex;
+    justify-content: space-between;
+    width: 50vh;
+}
+.form-content .form-input-usuario .labels-usuario2{
+    display: flex;
+    justify-content: space-between;
+    width: 53vh;
+}
+
+
+/*-----------------------------*/
+
+
+/*Customização do botão submit e enviar imagem*/
+
+
+.submit-button button{
+   display: block;
+   margin: 10px auto;
+   width: 250px;
+   height: 50px;
+   border-radius: 5px;
+   border: none;
+   background-color:    rgb(20, 98, 214) ;
+   font-family: 'Kanit', sans-serif;
+   font-size: large;
+   color: aliceblue;
+}
+/*Fim da customização dos botões*/
+
+/* Customização do "Entre aqui"*/
+
+
+
+.login-redirect a{
+    text-decoration: none;
+    cursor: pointer;
+}   
+
+.login-redirect{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2vw;
+}
+
+.login-redirect span{
+    font-family: 'Noto Serif', sans-serif;
+}
+
+
+/* Customização do "Entre aqui"*/
+

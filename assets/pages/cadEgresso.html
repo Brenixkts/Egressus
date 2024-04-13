@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="../css/cadUser.css">
+   <script src="../js/previewImage.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <!--Início do formulario-->
+    <div class="container">
+        <div class="main-content">
+            <div class="form-header">
+                <img src="../img/logo 2.png" alt="">
+                 <br>
+             </div>
+            <form action="#">
+                <!--Cabeçalho do formulário de cadastro-->
+                <div class="form-content">
+                <!--Seção de inputs-->    
+                    <div class="form-input">
+                        <label for="inst-ensino">Nome da Instituição*</label>
+                        <input type="text" class="inst-ensino" required placeholder="Digite o nome da Instituição de Ensino*">
+                        <label for="campus">Campus*</label>
+                        <select name="campi" id="campus">
+                            <option value="maranguape">Maranguape</option>
+                        </select>
+
+                        <label for="ensino">Curso*</label>
+                    </div>
+
+                    <div class="tipo-ensino">
+                        <select name="grau-ensino" id="ensino">
+                            <option value="licenciatura-matematica">Licenciatura em matemática</option>
+                            <option value="tecnico-informatica">Tecnico integrado em informatica</option>
+                            <option value="licenciatura-fisica">Licenciatura em física</option>
+                        </select>
+                    </div>
+
+                    <div class="form-input">
+                        <label for="nome">Nome completo*</label>
+                        <input type="text" placeholder="Digite seu nome completo" required class="nome">
+                    </div>
+                    
+                    <div class="form-input-usuario">
+
+                        <div class="labels-usuario1">
+                            <label for="senha">Senha*</label>
+                            <label for="confirmar-senha">Confirme a senha*</label>
+                        </div>
+                            <input type="password" placeholder="Digite sua senha" required class="senha">
+                            <input type="password" placeholder="Confirme sua senha" required class="confirmar-senha">
+
+                            <div class="labels-usuario2">
+                                <label for="cpf">CPF*</label>
+                                <label for="data-nascimento">Data de nascimento*</label>
+                            </div>
+                            <input type="number" inputmode="numeric" name="cpf" placeholder="Digite o seu CPF*">
+                            <input type="date" name="data-nascimento"  class="dataNascimento"   required>
+        
+                    </div>
+
+                    
+
+                    <div class="form-input-endereco">
+
+                        <label for="endereco">Endereco*</label>
+                        <input type="text" placeholder="Digite seu endereço*" required class="endereco">
+                        <label for="bairro">Bairro*</label>
+                        <input type="text" placeholder="Digite seu bairro*" required class="bairro">
+
+                        <div class="labels-endereco1">
+                            <label for="cidade">Cidade*</label>
+                            <label for="uf">UF*</label>
+                        </div>
+
+                        <input type="text" class="cidade" required placeholder="Digite a cidade*">
+                        <select name="estados" id="uf">
+                            <optgroup label="Região Nordeste">
+                                <option value="CE">CE</option>
+                                <option value="PB">PB</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                            </optgroup>
+                        </select>
+
+                        
+                        <div class="labels-endereco2">
+                            <label for="complemento">Complemento</label>
+                            <label for="cep">Cep*</label>
+                        </div>
+
+                        <input type="text" class="complemento" required placeholder="Digite o complemento">
+                        
+                        <input type="number" class="cep" required placeholder="Digite cep*"> 
+
+
+                    </div>
+                    <div class="form-input-contato">
+                        <div class="labels-contato">
+                            <label for="celular">Celular*</label>
+                            <label for="telefone">Telefone</label>
+                        </div>
+                        <input type="tel" class="celular" required placeholder="(xx) xxxx-xxxx*">
+                        <input type="tel" class="telefone" placeholder="(xx) xxxx-xxxx">
+                    </div>
+                    <div class="form-input">
+                        <label for="email">Email*</label>
+                        <input type="email" placeholder="Digite seu email*" required>
+                    </div>
+                    <br>
+                </div>
+                <div class="submit-button">
+                    <button>Cadastrar</button>
+                </div>
+                <div class="login-redirect">
+                    <span>Já tem uma conta? <a href="../pages/login.html">Entre aqui</a></span>
+                </div>
+                <div class="login-redirect">
+                    <span>Deseja cadastrar um usuário? <a href="../pages/cadEgresso.html">Vamos lá!</a></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
