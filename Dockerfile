@@ -34,10 +34,12 @@ RUN python -m venv /venv && \
   mkdir -p /data/web/media && \
   chown -R duser:duser /venv && \
   chown -R duser:duser /data/web/static && \
+  chown -R duser:duser /scripts && \
   chown -R duser:duser /data/web/media && \
   chmod -R 755 /data/web/static && \
   chmod -R 755 /data/web/media && \
-  chmod -R +x /scripts
+  chmod -R 755 /scripts && \
+  dos2unix /scripts/commands.sh
 
 # Adiciona a pasta scripts e venv/bin 
 # no $PATH do container.
@@ -45,9 +47,6 @@ ENV PATH="/scripts:/venv/bin:$PATH"
 
 # Muda o usuário para duser
 USER duser
-
-# Fix: converte arquivo para quebra de linha do unix
-RUN dos2unix /scripts/commands.sh
 
 # Executa o arquivo scripts/commands.sh
 CMD ["commands.sh"]
