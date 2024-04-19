@@ -46,5 +46,8 @@ ENV PATH="/scripts:/venv/bin:$PATH"
 # Muda o usuário para duser
 USER duser
 
+# Fix: checa a existência do arquivo
+RUN stat /scripts/commands.sh
+
 # Executa o arquivo scripts/commands.sh
 CMD ["commands.sh"]
