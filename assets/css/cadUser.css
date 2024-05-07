@@ -172,6 +172,52 @@ body{
     margin-left: 0.5vh;
 }
 
+/*Padronização da label da área Modadlidade*/
+
+
+ input[type="radio"] {
+    display: none;
+  }
+ .modalidade-ensino label {
+    position: relative;
+    color:  rgb(0, 61, 153);
+    font-family: "Poppins", sans-serif;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8em;
+    border: 3px solid  rgb(0, 61, 153);
+    padding: 0.75em 1em;
+    border-radius: 0.5em;
+  }
+   .modalidade-ensino label:before {
+    content: "";
+    height: 1em;
+    width: 1em;
+    border: 3px solid  rgb(0, 61, 153);
+    border-radius: 50%;
+  }
+  
+  input[type="radio"]:checked + label:before {
+    height: 0.35em;
+    width: 0.35em;
+    border: 0.25em solid #ffffff;
+    background-color:  rgb(0, 61, 153);
+  }
+  
+  input[type="radio"]:checked + label {
+    background-color:  rgb(0, 61, 153);
+    color: #ffffff;
+  }
+
+  .modalidade-ensino{
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5px;
+  }
+/*Formatação da área Modalidade*/
+
+
 
 /*Remove as setas do input number*/
 input[type=number]::-webkit-inner-spin-button,
@@ -188,13 +234,13 @@ input[type=number]::-webkit-inner-spin-button,
 .form-content .form-input-endereco .labels-endereco1{
     display: flex;
     justify-content: space-between;
-    width: 38vh;
+    width: 40.5vh;
 }
 /*Cep e complemento*/
 .form-content .form-input-endereco .labels-endereco2{
     display: flex;
     justify-content: space-between;
-    width: 40.5vh;
+    width: 43vh;
 }
 .form-content .form-input-contato .labels-contato{
     display: flex;
@@ -206,21 +252,24 @@ input[type=number]::-webkit-inner-spin-button,
 .form-content .form-input-contato .labels-contato{
     display: flex;
     justify-content: space-between;
-    width: 38.7vh;
+    width: 40.5vh;
 }
 
 
-
+/*Senha e confirmação*/
 .form-content .form-input-usuario .labels-usuario1{
     display: flex;
     justify-content: space-between;
-    width: 50vh;
+    width: 52.4vh;
 }
+/*CPF e data de nascimento*/
 .form-content .form-input-usuario .labels-usuario2{
     display: flex;
     justify-content: space-between;
-    width: 53vh;
+    width: 55.5vh;
 }
+
+
 
 
 /*-----------------------------*/
@@ -263,5 +312,7 @@ input[type=number]::-webkit-inner-spin-button,
 }
 
 
-/* Customização do "Entre aqui"*/
+/* Fim da customização do "Entre aqui"*/
 
+
+/*RESPONSIVIDADE*/

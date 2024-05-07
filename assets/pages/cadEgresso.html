@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="../css/cadUser.css">
+   <link rel="stylesheet" href="../css/cad.css">
    <script src="../js/previewImage.js" defer></script>
-    <title>Document</title>
+    <title>Egressus</title>
 </head>
 <body>
     <!--Início do formulario-->
@@ -20,61 +20,14 @@
                 <div class="form-content">
                 <!--Seção de inputs-->    
                     <div class="form-input">
-                        <label for="inst-ensino">Nome da Instituição*</label>
+                        <label for="inst-ensino">Nome da Instituição</label>
                         <input type="text" class="inst-ensino" required placeholder="Digite o nome da Instituição de Ensino*">
-                        <label for="campus">Campus*</label>
-                        <select name="campi" id="campus">
-                            <option value="maranguape">Maranguape</option>
-                        </select>
-
-                        <label for="ensino">Curso*</label>
                     </div>
-
-                    <div class="tipo-ensino">
-                        <select name="grau-ensino" id="ensino">
-                            <option value="licenciatura-matematica">Licenciatura em matemática</option>
-                            <option value="tecnico-informatica">Tecnico integrado em informatica</option>
-                            <option value="licenciatura-fisica">Licenciatura em física</option>
-                        </select>
-                    </div>
-
-                    <div class="form-input">
-                        <label for="nome">Nome completo*</label>
-                        <input type="text" placeholder="Digite seu nome completo" required class="nome">
-                    </div>
-                    
-                    <div class="form-input-usuario">
-
-                        <div class="labels-usuario1">
-                            <label for="senha">Senha*</label>
-                            <label for="confirmar-senha">Confirme a senha*</label>
-                        </div>
-                            <input type="password" placeholder="Digite sua senha" required class="senha">
-                            <input type="password" placeholder="Confirme sua senha" required class="confirmar-senha">
-
-                            <div class="labels-usuario2">
-                                <label for="cpf">CPF*</label>
-                                <label for="data-nascimento">Data de nascimento*</label>
-                            </div>
-                            <input type="number" inputmode="numeric" name="cpf" placeholder="Digite o seu CPF*">
-                            <input type="date" name="data-nascimento"  class="dataNascimento"   required>
-        
-                    </div>
-
-                    
-
                     <div class="form-input-endereco">
-
-                        <label for="endereco">Endereco*</label>
-                        <input type="text" placeholder="Digite seu endereço*" required class="endereco">
-                        <label for="bairro">Bairro*</label>
-                        <input type="text" placeholder="Digite seu bairro*" required class="bairro">
-
                         <div class="labels-endereco1">
                             <label for="cidade">Cidade*</label>
                             <label for="uf">UF*</label>
                         </div>
-
                         <input type="text" class="cidade" required placeholder="Digite a cidade*">
                         <select name="estados" id="uf">
                             <optgroup label="Região Nordeste">
@@ -84,32 +37,45 @@
                                 <option value="PI">PI</option>
                             </optgroup>
                         </select>
+            
+                        <label for="endereco">Rua*</label>
+                        <input type="text" placeholder="Digite a rua*" required class="rua">
 
-                        
+
                         <div class="labels-endereco2">
-                            <label for="complemento">Complemento</label>
-                            <label for="cep">Cep*</label>
+                            <label for="bairro">Número*</label>
+                            <label for="cep">Bairro*</label>
                         </div>
 
-                        <input type="text" class="complemento" required placeholder="Digite o complemento">
+                        <input type="number" class="cep" required placeholder="Digite o número*"> 
                         
-                        <input type="number" class="cep" required placeholder="Digite cep*"> 
+                        <input type="text" class="endereço" required placeholder="Digite o bairro*">
+                        <div class="labels-endereco3">
+                            <label for="numero">CEP*</label>
+                            <label for="complemento">Complemento</label>
+                        </div>
+                        <input type="text" class="bairro" required placeholder="Digite o CEP*">
 
+                        <input type="text" class="commplemento" required placeholder="Digite o complemento*">
 
+                        
                     </div>
                     <div class="form-input-contato">
-                        <div class="labels-contato">
-                            <label for="celular">Celular*</label>
-                            <label for="telefone">Telefone</label>
-                        </div>
-                        <input type="tel" class="celular" required placeholder="(xx) xxxx-xxxx*">
-                        <input type="tel" class="telefone" placeholder="(xx) xxxx-xxxx">
+                        <label for="telefone">Telefone(s)*</label>
+                        <input type="number" class="telefone-input" required placeholder="(xx) xxxx-xxxx*">
+                        <input type="number" class="telefone-input" placeholder="(xx) xxxx-xxxx">
                     </div>
                     <div class="form-input">
                         <label for="email">Email*</label>
-                        <input type="email" placeholder="Digite seu email*" required>
+                        <input type="email" class="email" placeholder="Digite o email da instituição*">
+                    </div>
+                    
+                    <div class="form-input">
+                        <label for="logo" id="label-img">Logomarca</label>
+                        <input type="file" class="logo-IE" id="logo-img" required>
                     </div>
                     <br>
+
                 </div>
                 <div class="submit-button">
                     <button>Cadastrar</button>
