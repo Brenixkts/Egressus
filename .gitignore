@@ -5,6 +5,7 @@ gunicorn-error-log
 __localcode
 /data/
 .notes
+.vscode
 
 # Django #
 *.log
