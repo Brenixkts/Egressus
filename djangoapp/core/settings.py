@@ -18,7 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # /data/web/media
 DATA_DIR = BASE_DIR.parent / 'data' / 'web'
 
-# Quick-start development settings - unsuitable for production
+# Quick-start development settings - unsuitable for productionf
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -37,13 +37,17 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'django_use_email_as_username.apps.DjangoUseEmailAsUsernameConfig',
+    'custom_user.apps.CustomUserConfig',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'egressusapp',
+    'egressus_app',
 ]
+
+AUTH_USER_MODEL = 'custom_user.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

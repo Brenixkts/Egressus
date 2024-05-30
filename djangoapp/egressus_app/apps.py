@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class EgressusappConfig(AppConfig):
+class EgressusAppConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'egressusapp'
+    name = 'egressus_app'

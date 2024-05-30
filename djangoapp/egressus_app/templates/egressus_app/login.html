@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="{% static 'egressusapp/css/login.css' %}">
+   <link rel="stylesheet" href="{% static 'egressus_app/css/login.css' %}">
     <title> Egressus - Login</title>
 </head>
 <body>
@@ -12,20 +12,20 @@
     <div class="container">
         <div class="main-content">
             <div class="form-header">
-                <img src="{% static 'egressusapp/img/logo 2.png' %}" alt="">
+                <img src="{% static 'egressus_app/img/logo 2.png' %}" alt="">
                  <br>
              </div>
-            <form action="#">
+            <form action="{% url 'login' %}" method="POST">{% csrf_token %}
                 <!--Cabeçalho do formulário de cadastro-->
                 <div class="form-content">
                 <!--Seção de inputs-->    
                     <div class="form-input">
                         <label for="email">Email</label>
-                        <input type="email" class="email" placeholder="Digite o seu email">
+                        <input type="email" class="email" placeholder="Digite o seu email" name="email">
                     </div>
                     <div class="form-input">
                         <label for="senha">Senha</label>
-                        <input type="password" class="senha-user" placeholder="Digite sua senha">
+                        <input type="password" class="senha-user" placeholder="Digite sua senha" name="password">
                     </div>
                     <br>
 
