@@ -86,7 +86,6 @@ class EgressoTurma(models.Model):
     user = models.OneToOneField(get_user_model(), models.CASCADE)
     turma = models.ForeignKey(Turma, models.DO_NOTHING, db_column='id_turma')
     representante_de_turma = models.BooleanField(default=False)
-    data_nascimento = models.DateField()
 
     class Meta:
         managed = True
@@ -100,7 +99,7 @@ class EgressoTurma(models.Model):
 
 class EgressoImageContent(models.Model):
     egresso = models.ForeignKey(EgressoTurma, models.DO_NOTHING, db_column='id_egresso')
-    egresso_media_url = models.URLField(unique=True, blank=True, null=True)
+    egresso_image_url = models.URLField(unique=True, blank=True, null=True)
 
     class Meta:
         managed = True
