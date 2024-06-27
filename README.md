@@ -53,5 +53,5 @@ Agora, com o usuário criado, você poderá acessar o painel de administrador: <
 
 Você pode acessar o banco de dados diretamente pelo container do pgadmin: <http://localhost:5050/>
 
-As credenciais podem ser configuradas no arquivo `.env.dev`.
+As credenciais podem ser configuradas no arquivo `docker-compose.yml`.
 
