@@ -42,8 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'egressus_app',
     'account',
+    'egressus_app',
+    'email_notifications',
 ]
 
 AUTH_USER_MODEL = 'account.Account'
