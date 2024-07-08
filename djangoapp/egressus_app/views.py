@@ -17,7 +17,7 @@ def login_authentication(request):
         #Autentica usuário
         user = authenticate(username=email, password=password)
         # Verifica se o usuário existe e se está como ativo
-        if user is not None and user.is_active == True:
+        if user and user.is_active == True:
             #Realiza login do usuário
             login(request, user)
             return HttpResponse(f"Bem vindo {user.first_name}")
