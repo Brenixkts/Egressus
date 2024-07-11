@@ -45,9 +45,29 @@ INSTALLED_APPS = [
     'account',
     'egressus_app',
     'email_notifications',
+    'django_celery_beat',
 ]
 
 AUTH_USER_MODEL = 'account.Account'
+
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+
+# Configurações de e-mail
+EMAIL_BACKEND="django.core.mail.backends.smtp.EmailBackend"
+EMAIL_PORT="587"
+EMAIL_USE_TLS="True"
+EMAIL_HOST=os.getenv('EMAIL_HOST', "change-me")
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', "change-me")
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', "change-me")
+
+# Configuração adicional
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# DEFAULT_FROM_EMAIL = '[título do remetente] <seu-email@seuservidoremail.com>'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

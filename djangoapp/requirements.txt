@@ -1,2 +1,5 @@
 Django>=5.0.4,<5.1
 psycopg2-binary>=2.9.9,<2.10
+celery>=5.4,<5.5
+redis>=5.0.7,<5.1
+django-celery-beat>=2.6,<2.7
