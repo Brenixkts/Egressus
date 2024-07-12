@@ -24,9 +24,9 @@ def debug_task(self):
 
 #Configurações do celery-beat
 app.conf.beat_schedule = {
-    'enviar-emails-agendados-a-cada-hora': {
+    'enviar-emails-agendados-a-cada-minuto': {
         'task': 'email_notifications.tasks.enviar_notificacoes_agendadas',
-        'schedule': crontab(minute=0, hour='*/1'),  # A cada hora
+        'schedule': crontab(minute='*'),  # A cada minuto
     },
     'enviar-emails-automaticos-diariamente': {
         'task': 'email_notifications.tasks.enviar_notificacoes_automaticas',
