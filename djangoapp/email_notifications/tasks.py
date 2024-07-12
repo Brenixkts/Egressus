@@ -21,7 +21,7 @@ def enviar_notificacoes_agendadas():
             # Filtra e-mails dos egressos com base nos IDs obtidos
             destinatarios = [egresso.user.email for egresso in EgressoTurma.objects.filter(user_id__in=egressos_ids)]
         
-        send_mail(
+        send_mail( ## ALterar no futuro para ser senda_mass_mail() e enviar um template html do email @tobias-costa @brenixkts
             notificacao.titulo,
             notificacao.mensagem,
             settings.EMAIL_HOST_USER,
@@ -42,7 +42,7 @@ def enviar_notificacoes_automaticas():
         egressos = EgressoTurma.objects.filter(turma=turma).select_related('user')
         # Lista os e-mails dos egressos para envio
         destinatarios = [et.user.email for et in egressos]
-        send_mail(
+        send_mail( ## ALterar no futuro para ser senda_mass_mail() e enviar um template html do email @tobias-costa @brenixkts
             'Feliz Aniversário de Formatura!',
             f'Parabéns pela formatura! Hoje comemoramos o aniversário de formatura da turma {turma.nome_turma}.',
             settings.EMAIL_HOST_USER,
@@ -53,7 +53,7 @@ def enviar_notificacoes_automaticas():
     egressos_aniversariantes = EgressoTurma.objects.filter(user__date_of_birth=hoje)
     for egresso in egressos_aniversariantes:
         # Envia o e-mail de aniversário pessoal para o egresso atual
-        send_mail(
+        send_mail( ## ALterar no futuro para enviar um template html do email @tobias-costa @brenixkts
             'Feliz Aniversário!',
             f'Parabéns, {egresso.user.first_name}! Desejamos a você um ótimo aniversário!',
             settings.EMAIL_HOST_USER,
@@ -65,7 +65,7 @@ def enviar_notificacoes_automaticas():
         if egressos_colegas:
             # Envia um e-mail para os colegas informando sobre o aniversário do egresso
             mensagem_colegas = f"Hoje é aniversário do {egresso.user.first_name} {egresso.user.last_name}!"
-            send_mail(
+            send_mail( ## ALterar no futuro para ser senda_mass_mail() e enviar um template html do email @tobias-costa @brenixkts
                 f"Aniversário do colega {egresso.user.first_name}", 
                 mensagem_colegas,
                 settings.EMAIL_HOST_USER,

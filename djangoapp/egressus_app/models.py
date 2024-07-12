@@ -83,7 +83,7 @@ class Turma(models.Model):
 
 class EgressoTurma(models.Model):
     id_egresso = models.AutoField(primary_key=True)
-    user = models.OneToOneField(get_user_model(), models.CASCADE)
+    user = models.OneToOneField(get_user_model(), models.CASCADE) ## No futuro atualizar para ForeignKey para que possa haver o mesmo egresso em turmas diferentes @tobias-costa
     turma = models.ForeignKey(Turma, models.DO_NOTHING, db_column='id_turma')
     representante_de_turma = models.BooleanField(default=False)
 
@@ -99,7 +99,7 @@ class EgressoTurma(models.Model):
 
 class EgressoImageContent(models.Model):
     egresso = models.ForeignKey(EgressoTurma, models.DO_NOTHING, db_column='id_egresso')
-    egresso_image_url = models.URLField(unique=True, blank=True, null=True)
+    egresso_image_url = models.URLField(unique=True, blank=True, null=True) ## Usar ImageField/FileField quando começar a tratar com o Amazon S3 @tobias-costa
 
     class Meta:
         managed = True
@@ -113,7 +113,7 @@ class EgressoImageContent(models.Model):
 
 class TurmaImageContent(models.Model):
     turma = models.ForeignKey(Turma, models.DO_NOTHING, db_column='id_turma')
-    turma_image_url = models.URLField(unique=True, blank=True, null=True)
+    turma_image_url = models.URLField(unique=True, blank=True, null=True) ## Usar ImageField/FileField quando começar a tratar com o Amazon S3 @tobias-costa
 
     class Meta:
         managed = True
@@ -127,7 +127,7 @@ class TurmaImageContent(models.Model):
 
 class TurmaAudioContent(models.Model):
     turma = models.ForeignKey(Turma, models.DO_NOTHING, db_column='id_turma')
-    turma_audio_url = models.URLField(unique=True, blank=True, null=True)
+    turma_audio_url = models.URLField(unique=True, blank=True, null=True) ## Usar ImageField/FileField quando começar a tratar com o Amazon S3
 
     class Meta:
         managed = True
