@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from egressus_app.models import Curso
 from django.utils import timezone
 
@@ -20,5 +21,13 @@ class Notificacao(models.Model):
         verbose_name = 'Notificação'
         verbose_name_plural = 'Notificações'
 
+    def clean(self):
+        if not self.enviar_para_todos and self.curso_alvo is None:
+            raise ValidationError('Você deve selecionar um curso alvo se "enviar_para_todos" estiver desmarcado.')
+
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)
+        
     def __str__(self):
         return self.titulo
