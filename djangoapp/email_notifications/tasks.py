@@ -55,18 +55,18 @@ def enviar_notificacoes_automaticas():
         # Envia o e-mail de aniversário pessoal para o egresso atual
         send_mail( ## ALterar no futuro para enviar um template html do email @tobias-costa @brenixkts
             'Feliz Aniversário!',
-            f'Parabéns, {egresso.user.first_name}! Desejamos a você um ótimo aniversário!',
+            f'Parabéns, {egresso.user.get_short_name()}! Desejamos a você um ótimo aniversário!',
             settings.EMAIL_HOST_USER,
             [egresso.user.email],
         )
-        # Avisar os colegas da turma do aniversariante
+        # Avisar os colegas da turma do aniversariante:
         # O comando abaixo obtém os e-mails dos colegas de turma do egresso, excluindo o próprio egresso
-        egressos_colegas = EgressoTurma.objects.filter(turma=egresso.turma).exclude(user=egresso.user).values_list('user__email', flat=True)
+        egressos_colegas = list(EgressoTurma.objects.filter(turma=egresso.turma).exclude(user=egresso.user).values_list('user__email', flat=True))
         if egressos_colegas:
             # Envia um e-mail para os colegas informando sobre o aniversário do egresso
-            mensagem_colegas = f"Hoje é aniversário do {egresso.user.first_name} {egresso.user.last_name}!"
+            mensagem_colegas = f"Hoje é aniversário do {egresso.user.get_full_name()}!"
             send_mail( ## ALterar no futuro para ser senda_mass_mail() e enviar um template html do email @tobias-costa @brenixkts
-                f"Aniversário do colega {egresso.user.first_name}", 
+                f"Aniversário do colega {egresso.user.get_short_name()}", 
                 mensagem_colegas,
                 settings.EMAIL_HOST_USER,
                 egressos_colegas,

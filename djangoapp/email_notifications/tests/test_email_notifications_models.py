@@ -1,4 +1,3 @@
-# email_notifications/tests/test_models.py
 from django.test import TestCase
 from django.core.exceptions import ValidationError
 from email_notifications.models import Notificacao
@@ -12,6 +11,7 @@ class NotificacaoModelTest(TestCase):
             titulo="Teste de Notificação",
             mensagem="Essa é uma mensagem de teste",
             tipo_de_mensagem=1,
+            data_de_postagem=timezone.now(),
             curso_alvo=self.curso,
             enviar_para_todos=False
         )
@@ -32,6 +32,7 @@ class NotificacaoModelTest(TestCase):
             titulo="Teste Sem Curso",
             mensagem="Mensagem sem curso",
             tipo_de_mensagem=2,
+            data_de_postagem=timezone.now(),
             enviar_para_todos=True,
             curso_alvo=None
         )
@@ -47,8 +48,20 @@ class NotificacaoModelTest(TestCase):
             titulo="Teste",
             mensagem="Mensagem de teste",
             tipo_de_mensagem=1,
+            data_de_postagem=timezone.now(),
             enviar_para_todos=False,
             curso_alvo=None
         )
         with self.assertRaises(ValidationError):
             notificacao.save()
+    
+    def test_notificacao_data_de_postagem_default(self):
+        notificacao = Notificacao.objects.create(
+            titulo="Teste Data Default",
+            mensagem="Mensagem de teste",
+            tipo_de_mensagem=1,
+            enviar_para_todos=True,
+            curso_alvo=None
+        )
+        self.assertIsNotNone(notificacao.data_de_postagem)
+        self.assertAlmostEqual(notificacao.data_de_postagem, timezone.now(), delta=timezone.timedelta(seconds=1))
