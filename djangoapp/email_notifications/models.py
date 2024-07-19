@@ -21,12 +21,12 @@ class Notificacao(models.Model):
         verbose_name = 'Notificação'
         verbose_name_plural = 'Notificações'
 
-    def clean(self):
+    def validate_notification(self):
         if not self.enviar_para_todos and self.curso_alvo is None:
             raise ValidationError('Você deve selecionar um curso alvo se "enviar_para_todos" estiver desmarcado.')
 
     def save(self, *args, **kwargs):
-        self.clean()
+        self.validate_notification()
         super().save(*args, **kwargs)
         
     def __str__(self):
