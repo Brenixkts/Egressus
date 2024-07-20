@@ -16,7 +16,7 @@ class IndexViewTest(TestCase):
 class LoginViewTest(TestCase):
     def setUp(self):
         self.client = Client()
-        self.user = User.objects.create_user(username='testuser', email='test@example.com', password='password123')
+        self.user = User.objects.create_user(cpf='46681423019', username='testuser', email='test@example.com', password='password123')
 
     def test_login_view_get(self):
         response = self.client.get(reverse('login'))
@@ -24,14 +24,14 @@ class LoginViewTest(TestCase):
         self.assertTemplateUsed(response, 'egressus_app/login.html')
 
     def test_login_view_post_success(self):
-        response = self.client.post(reverse('login'), {'email': 'test@example.com', 'password': 'password123'})
+        response = self.client.post(reverse('login'), {'cpf': '46681423019', 'password': 'password123'})
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, f"Bem vindo {self.user.first_name}")
 
     def test_login_view_post_failure(self):
-        response = self.client.post(reverse('login'), {'email': 'wrong@example.com', 'password': 'wrongpassword'})
+        response = self.client.post(reverse('login'), {'cpf': '12345678910', 'password': 'wrongpassword'})
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Erro de login") ##Alterar após a atualização da página home @Brenixkts
+        self.assertContains(response, "Erro de login") ##Alterar após a atualização da página home @Tobias-Costa @Brenixkts
 
 # class HomeViewTest(TestCase):
 #     def setUp(self):

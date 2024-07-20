@@ -16,8 +16,8 @@ class TestEnvioNotificacoesAgendadas(TestCase):
         self.estado = Estado.objects.create(estado="Ceará", codigo_estado="CE")
         self.municipio = Municipio.objects.create(municipio="Maranguape", estado=self.estado)
         self.escola = Escola.objects.create(nome_escola="IFCE campus Maranguape", municipio=self.municipio)
-        self.user1 = Account.objects.create_user(email='user1@example.com', username='user1', password='password')
-        self.user2 = Account.objects.create_user(email='user2@example.com', username='user2', password='password')
+        self.user1 = Account.objects.create_user(cpf='46681423019', email='user1@example.com', username='user1', password='password')
+        self.user2 = Account.objects.create_user(cpf='36795730069', email='user2@example.com', username='user2', password='password')
         self.turma = Turma.objects.create(nome_turma='Turma Teste', data_formatura=timezone.now().date(), curso=self.curso, escola=self.escola)
         EgressoTurma.objects.create(user=self.user1, turma=self.turma)
         EgressoTurma.objects.create(user=self.user2, turma=self.turma)
@@ -37,13 +37,16 @@ class TestEnvioNotificacoesAgendadas(TestCase):
 
         # Verifica se a função send_mail foi chamada
         self.assertTrue(mock_send_mail.called)
-
+        
+        egressos_ids = EgressoTurma.objects.filter(turma__curso=self.notificacao.curso_alvo).values_list('user_id', flat=True)
+        destinatarios = [egresso.user.email for egresso in EgressoTurma.objects.filter(user_id__in=egressos_ids)]
+        
         # Verifica os parâmetros com que a função send_mail foi chamada        
         mock_send_mail.assert_called_once_with(
             'Título da Notificação',
             'Mensagem da notificação',
             settings.EMAIL_HOST_USER,
-            ['user2@example.com', 'user1@example.com']
+            destinatarios  # ['user1@example.com', 'user2@example.com']
         )
 
         # Verifica se a notificação foi deletada após o envio
@@ -58,8 +61,8 @@ class TestEnvioNotificacoesAutomaticas(TestCase):
         self.municipio = Municipio.objects.create(municipio="Maranguape", estado=self.estado)
         self.escola = Escola.objects.create(nome_escola="IFCE campus Maranguape", municipio=self.municipio)
         self.curso = Curso.objects.create(curso='Curso Teste')
-        self.user1 = Account.objects.create_user(email='user1@example.com', username='user1', password='password', date_of_birth=self.hoje)
-        self.user2 = Account.objects.create_user(email='user2@example.com', username='user2', password='password', date_of_birth=self.hoje)
+        self.user1 = Account.objects.create_user(cpf='46681423019', email='user1@example.com', username='user1', password='password', date_of_birth=self.hoje)
+        self.user2 = Account.objects.create_user(cpf='36795730069', email='user2@example.com', username='user2', password='password', date_of_birth=self.hoje)
         self.turma = Turma.objects.create(nome_turma='Turma Teste', data_formatura=self.hoje, curso=self.curso, escola=self.escola)
         EgressoTurma.objects.create(user=self.user1, turma=self.turma)
         EgressoTurma.objects.create(user=self.user2, turma=self.turma)

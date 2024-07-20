@@ -12,17 +12,17 @@ class AccountAdmin(UserAdmin):
     model = Account
     
     # Define os campos que serão exibidos na lista de objetos no admin
-    list_display = ('email', 'username', 'first_name', 'last_name', 'date_of_birth', 'date_joined', 'last_login', 'is_staff', 'is_superuser')
+    list_display = ('cpf', 'username', 'email', 'first_name', 'last_name', 'date_of_birth', 'date_joined', 'last_login', 'is_staff', 'is_superuser')
     
     # Define os campos que poderão ser utilizados para pesquisa no admin
-    search_fields = ('email', 'username', 'first_name', 'last_name')
+    search_fields = ('cpf', 'username', 'email', 'first_name', 'last_name')
     
     # Define os campos que serão somente leitura no admin
     readonly_fields = ('id', 'date_joined', 'last_login')
 
     # Define a disposição dos campos nos formulários de visualização/edição
     fieldsets = (
-        (None, {'fields': ('email', 'username', 'password')}),
+        (None, {'fields': ('cpf', 'username', 'email', 'password')}),
         (_('Personal Info'), {'fields': ('first_name', 'last_name', 'date_of_birth')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
@@ -32,7 +32,7 @@ class AccountAdmin(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'username', 'password1', 'password2'),
+            'fields': ('cpf', 'username', 'email', 'password1', 'password2'),
         }),
     )
 
@@ -43,7 +43,7 @@ class AccountAdmin(UserAdmin):
     list_filter = ('is_staff', 'is_superuser', 'is_active')
     
     # Define a ordenação padrão dos objetos na lista
-    ordering = ('email',)
+    ordering = ('cpf',)
 
 # Registra o modelo Account e seu admin personalizado no site do admin
 admin.site.register(Account, AccountAdmin)

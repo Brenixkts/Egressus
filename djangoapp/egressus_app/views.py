@@ -12,10 +12,10 @@ def login_authentication(request):
         return render(request, 'egressus_app/login.html')
     else:
         # Caso o método seja POST, recebe os dados do formulário em login.html
-        email = request.POST.get('email')
+        cpf = request.POST.get('cpf')
         password = request.POST.get('password')
         #Autentica usuário
-        user = authenticate(username=email, password=password)
+        user = authenticate(username=cpf, password=password)
         # Verifica se o usuário existe e se está como ativo
         if user and user.is_active == True:
             #Realiza login do usuário

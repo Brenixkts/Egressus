@@ -13,6 +13,7 @@ class IntegrationTest(TestCase):
         self.escola = Escola.objects.create(nome_escola="Escola Estadual", municipio=self.municipio)
         self.turma = Turma.objects.create(nome_turma="Turma 2024", data_formatura="2024-12-01", curso=self.curso, escola=self.escola)
         self.user = User.objects.create_user(
+            cpf='46681423019',
             email='integrationuser@example.com',
             username='integrationuser',
             password='integrationpass',

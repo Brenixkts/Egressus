@@ -1,42 +1,64 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.core.exceptions import ValidationError
 
+def validate_cpf(cpf):
+        # Obtém apenas os números do CPF, ignorando pontuações
+        numbers = [int(digit) for digit in cpf if digit.isdigit()]
+
+        # Verifica se o CPF possui 11 números ou se todos são iguais:
+        if len(numbers) != 11 or len(set(numbers)) == 1:
+            raise ValidationError(f'{cpf} não é um CPF válido.')
+        # Validação do primeiro dígito verificador:
+        sum_of_products = sum(a*b for a, b in zip(numbers[0:9], range(10, 1, -1)))
+        expected_digit = (sum_of_products * 10 % 11) % 10
+        if numbers[9] != expected_digit:
+            raise ValidationError(f'{cpf} não é um CPF válido.')
+
+        # Validação do segundo dígito verificador:
+        sum_of_products = sum(a*b for a, b in zip(numbers[0:10], range(11, 1, -1)))
+        expected_digit = (sum_of_products * 10 % 11) % 10
+        if numbers[10] != expected_digit:
+            raise ValidationError(f'{cpf} não é um CPF válido.')
 
 class MyAccountManager(BaseUserManager):
     """
     Gerenciador personalizado para o modelo de usuário customizado.
     """
-
-    def create_user(self, email, username, password=None, **extra_fields):
+           
+    def create_user(self, cpf, email, username, password=None, **extra_fields):
         """
         Cria e salva um usuário com o email, username, first_name, last_name, date_of_birth e senha fornecidos.
         """
+        if not cpf:
+            raise ValueError('O CPF é obrigatório para criar um usuário')
         if not email:
             raise ValueError('O email é obrigatório para criar um usuário')
         if not username:
             raise ValueError('O username é obrigatório para criar um usuário')
 
         email = self.normalize_email(email)
-        user = self.model(email=email, username=username, **extra_fields)
+        user = self.model(cpf=cpf, email=email, username=username, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, username, password, **extra_fields):
+    def create_superuser(self, cpf, email, username, password, **extra_fields):
         """
         Cria e salva um superusuário com o email, username, first_name, last_name, date_of_birth e senha fornecidos.
         """
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         
-        return self.create_user(email, username, password, **extra_fields)
+
+        return self.create_user(cpf, email, username, password, **extra_fields)
 
 
 class Account(AbstractBaseUser):
     """
     Modelo customizado de usuário que utiliza email como identificador único.
     """
-
+    cpf = models.CharField(max_length=11,verbose_name="CPF", unique=True, validators=[validate_cpf])
     email = models.EmailField(verbose_name="Email", max_length=60, unique=True)
     username = models.CharField(max_length=30, unique=True)
     first_name = models.CharField(verbose_name="Primeiro Nome", max_length=30, blank=True)
@@ -48,8 +70,8 @@ class Account(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email'  # Define o campo de identificação único como o email
-    REQUIRED_FIELDS = ['username']  # Campos necessários ao criar um usuário via createsuperuser
+    USERNAME_FIELD = 'cpf'  # Define o campo de identificação único como o email
+    REQUIRED_FIELDS = ['email', 'username']  # Campos necessários ao criar um usuário via createsuperuser
 
     objects = MyAccountManager()  # Define o gerenciador personalizado para este modelo
 
@@ -85,3 +107,4 @@ class Account(AbstractBaseUser):
         No exemplo, todos os superusuários têm permissão para todos os módulos.
         """
         return True
+    

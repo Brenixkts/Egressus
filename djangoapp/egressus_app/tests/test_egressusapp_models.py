@@ -85,6 +85,7 @@ class EgressoTurmaModelTest(TestCase):
         self.escola = Escola.objects.create(nome_escola="Escola Estadual", municipio=self.municipio)
         self.turma = Turma.objects.create(nome_turma="Turma 2024", data_formatura="2024-12-01", curso=self.curso, escola=self.escola)
         self.user = User.objects.create_user(
+            cpf='46681423019',
             email='testuser@example.com',
             username='testuser',
             password='password123',
@@ -106,6 +107,7 @@ class EgressoImageContentModelTest(TestCase):
         self.escola = Escola.objects.create(nome_escola="Escola Estadual", municipio=self.municipio)
         self.turma = Turma.objects.create(nome_turma="Turma 2024", data_formatura="2024-12-01", curso=self.curso, escola=self.escola)
         self.user = User.objects.create_user(
+            cpf='46681423019',
             email='testuser@example.com',
             username='testuser',
             password='password123',
